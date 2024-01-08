@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        :root {
+            --main-border: 4px solid black;
+            --main-radius: 5px;
+            --main-height: 100px;
+            --main-width: 800px;
+        }
+        body {
+            height: var(--main-height);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .banner {
+            height: var(--main-height);
+            width: var(--main-width);
+            margin: 20px auto;
+            border-radius: var(--main-radius);
+            border: var(--main-border);
+        }
+        .banner-text {
+            text-align: center;
+            line-height: var(--main-height);
+        }
+        .section-input {
+            width: var(--main-width);
+            margin: 20px auto;
+        }
+        .inputt, .inputt2 {
+            margin-left: 10px;
+            width: 80%;
+            height: 30px;
+        }
+        button {
+            height: 30px;
+            width: 15%;
+            margin: 15px;
+        }
+        .link-board, .link-board2{
+            width: 1000px;
+            border-radius: var(--main-radius);
+            margin: 20px auto;
+            border: var(--main-border);
+            padding: 5px;
+        }
+        .link-board, .link-board2 p {
+            margin-bottom: 6px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>    
+        <div class="banner">
+                <div class="banner-img">
+                <div class="banner-text">
+                    <h1>Generator linków</h1>
+                </div>
+            </div>
+    </header>
+    <main>
+        <div class="section-input">
+            <input type="text" class="inputt" value=""><button class="sendBTn">Generuj</button>
+        </div>
+        <div class="link-board"></div>
+        <hr>
+        <div class="banner">
+            <div class="banner-img">
+            <div class="banner-text">
+                <h1>Sprawdzanie tekstu</h1>
+            </div>
+        </div>
+        <div class="section-input">
+            <input type="text" class="inputt2" value=""><button class="sendBTN2">Generuj</button>
+        </div>
+        <div class="link-board2"></div>
+    </main>    
+    </div>
+
+
+    <script>
+        const inputText = document.querySelector(".inputt")
+        const inputText2 = document.querySelector(".inputt2")
+        const btnSend = document.querySelector(".sendBTN");
+        const btnSend2 = document.querySelector(".sendBTN2");
+        const linkBoard = document.querySelector(".link-board");
+        const linkBoard2 = document.querySelector(".link-board2");
+        const links = [];
+
+
+        const linkGenerator = () => {
+            const p = document.createElement("p");
+            const pNew = inputText.value.replace("cms7", "www");
+            p.textContent = pNew;
+            linkBoard.appendChild(p);
+            inputText.value = "";
+
+        }
+        
+        const textTranslation = () => {
+            const txt2 = inputText2.value.replaceAll("'", "’");
+            const txt3 = txt2.replaceAll('"', '”');
+            const p = document.createElement("p");
+            p.textContent = txt3;
+            linkBoard2.appendChild(p);
+            inputText2.value = "";
+        }
+
+
+        btnSend.addEventListener("click", linkGenerator);
+        btnSend2.addEventListener("click", textTranslation);
+    </script>
+</body>
+</html>
